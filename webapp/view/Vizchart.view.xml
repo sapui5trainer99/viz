@@ -1,0 +1,63 @@
+<mvc:View controllerName="vizchart.controller.Vizchart" 
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" 
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:vizdata="sap.viz.ui5.data"
+    xmlns:feeds="sap.viz.ui5.controls.common.feeds"
+>
+    <Page id="page" title="{i18n>title}">
+        <content>
+         <Panel > 
+        <viz:VizFrame vizType="column">
+        
+        <viz:dataset >
+        <vizdata:FlattenedDataset data="{/results}">
+
+        <vizdata:dimensions>
+        <vizdata:DimensionDefinition name="State" value="{State}" ></vizdata:DimensionDefinition>
+        </vizdata:dimensions>
+        <vizdata:measures>
+        <vizdata:MeasureDefinition  name="Population" value="{Polulation}"></vizdata:MeasureDefinition>
+        </vizdata:measures>
+
+        </vizdata:FlattenedDataset>
+        </viz:dataset>
+
+        <viz:feeds>
+
+        <feeds:FeedItem type="Measure" values="Population" uid="valueAxis"></feeds:FeedItem>
+        <feeds:FeedItem type="Dimension" values="State" uid="categoryAxis"></feeds:FeedItem> 
+       
+
+        </viz:feeds>
+
+        </viz:VizFrame>
+        <viz:VizFrame vizType="donut">
+        
+        <viz:dataset >
+        <vizdata:FlattenedDataset data="{/results}">
+
+        <vizdata:dimensions>
+        <vizdata:DimensionDefinition name="State" value="{State}" ></vizdata:DimensionDefinition>
+        </vizdata:dimensions>
+        <vizdata:measures>
+        <vizdata:MeasureDefinition  name="Population" value="{Polulation}"></vizdata:MeasureDefinition>
+        </vizdata:measures>
+
+        </vizdata:FlattenedDataset>
+        </viz:dataset>
+
+        <viz:feeds>
+
+        <feeds:FeedItem type="Measure" values="Population" uid="size"></feeds:FeedItem>
+        <feeds:FeedItem type="Dimension" values="State" uid="color"></feeds:FeedItem> 
+        
+        </viz:feeds>
+
+        </viz:VizFrame>
+        </Panel>
+        
+        </content>
+    </Page>
+</mvc:View>
+
